@@ -10,6 +10,10 @@ const Leaderboard = () => {
   const [playersList, setPlayersList] = useState([]);
   const [leaderboardList, setLeaderboardList] = useState([]);
 
+  // TO DO:
+  // We need to sort the playersList and set it to leaderboardList
+  // Highest score to lowest, and maybe display only the top 10 (or some arbitrary number)
+
   const fetchPlayers = async () => {
     const allPlayers = await API.graphql({ query: queries.listPlayers });
     setPlayersList(allPlayers?.data?.listPlayers?.items);
