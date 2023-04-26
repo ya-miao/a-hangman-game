@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-lighthallhangman-dev-94756-authRole",
+      "UnauthRoleArn": "arn:aws:iam::810036735283:role/amplify-lighthallhangman-dev-94756-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::810036735283:role/amplify-lighthallhangman-dev-94756-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-lighthallhangman-dev-94756-deployment",
+      "UnauthRoleName": "amplify-lighthallhangman-dev-94756-unauthRole",
+      "StackName": "amplify-lighthallhangman-dev-94756",
+      "StackId": "arn:aws:cloudformation:us-east-2:810036735283:stack/amplify-lighthallhangman-dev-94756/fec75050-e438-11ed-b692-0204b19c016d",
+      "AmplifyAppId": "d30mo3ki69mjvo"
+    },
+    "categories": {
+      "api": {
+        "lighthallhangman": {}
+      }
+    }
+  }
+}
