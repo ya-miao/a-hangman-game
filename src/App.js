@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 
 import Hangman from './pages/Hangman';
+import IntroScreen from './pages/IntroScreen';
 // test from Alicia
 
 function App() {
   return (
-    <Hangman />
+    <IntroScreen />
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
