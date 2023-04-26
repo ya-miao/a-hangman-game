@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import Hangman from './pages/Hangman';
 import IntroScreen from './pages/IntroScreen';
+import Leaderboard from './pages/LeaderBoard';
 
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
@@ -16,11 +17,12 @@ const App = () => {
 
   return (
     <>
-      {screen === 'hosted' ?
+      {/* {screen === 'hosted' ?
         <>Hosted game</> : screen === 'single' ?
           <Hangman /> :
             <IntroScreen setScreen={setScreen} />
-      }
+      } */}
+      <Leaderboard />
     </>
   );
 }
