@@ -8,7 +8,10 @@ import Popup from './Popup';
 import Notification from './Notification';
 import { showNotification as show, checkWin } from '../helpers/helpers';
 
+// TASK - We can come up with more words
 const words = ['application', 'programming', 'interface', 'wizard'];
+
+// TASK - We should be able to set a selected word and create a link to share for that game
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
 const GameVisual = () => {

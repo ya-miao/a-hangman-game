@@ -3,7 +3,7 @@
 }
 
 body, #root {
-  background-color: #F5F5F5;
+  background-color: #8d4d4d;
   color: #000000;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -64,7 +64,7 @@ h1 {
 }
 
 .letter {
-  border-bottom: 3px solid #2980b9;
+  border-bottom: 3px solid #003050;
   display: inline-flex;
   font-size: 30px;
   align-items: center;

@@ -1,29 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { useState } from 'react';
+
 import Hangman from './pages/Hangman';
 import IntroScreen from './pages/IntroScreen';
-// test from Alicia
 
-function App() {
+const App = () => {
+
+  const [screen, setScreen] = useState('intro');
+
   return (
-    <IntroScreen />
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    <>
+      {screen === 'hosted' ?
+        <>Hosted game</> : screen === 'single' ?
+          <Hangman /> :
+            <IntroScreen setScreen={setScreen} />
+      }
+    </>
   );
 }
 
