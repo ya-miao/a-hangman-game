@@ -1,11 +1,10 @@
 import React from 'react'
 
-// rafce
 const Header = () => {
   return (
     <>
       <h1>Hangman</h1>
-      <p>Find the hidden word - Enter a letter</p>
+      <p>Can you guess the word?</p>
     </>
   )
 }

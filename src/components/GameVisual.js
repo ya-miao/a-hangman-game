@@ -7,6 +7,7 @@ import Word from './Word';
 import Popup from './Popup';
 import Notification from './Notification';
 import { showNotification as show, checkWin } from '../helpers/helpers';
+import Tries from "./Tries";
 
 // TASK - We can come up with more words
 const words = ['application', 'programming', 'interface', 'wizard'];
@@ -64,9 +65,10 @@ const GameVisual = () => {
       <Header />
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
-        <WrongLetters wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+        <Tries wrongLetters={wrongLetters}/>
       </div>
+      <WrongLetters wrongLetters={wrongLetters} />
       <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
       <Notification showNotification={showNotification} />
     </>

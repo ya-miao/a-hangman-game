@@ -1,17 +1,19 @@
+import { Stack } from '@mui/material'
 import React from 'react'
 
 const WrongLetters = ({ wrongLetters }) => {
 
   return (
     <div className="wrong-letters-container">
-      <div>
         {wrongLetters.length > 0 && 
-          <p>Wrong</p>
+          <h2>Letters Used:</h2>
         }
+        <Stack direction={"row"} spacing={1}>
         {wrongLetters
-          .map((letter, i) => <span key={i}>{letter}</span>)
-          .reduce((prev, curr) => prev === null ? [curr] : [prev, ', ', curr], null)}
-      </div>
+          .map((letter, i) => 
+          <h2 key={i}>{letter}</h2>
+        )}
+        </Stack>
     </div>
   )
 }
