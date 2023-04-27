@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Figure from './Figure';
@@ -15,7 +14,7 @@ const words = ['application', 'programming', 'interface', 'wizard'];
 // TASK - We should be able to set a selected word and create a link to share for that game
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
-const GameVisual = () => {
+const GameVisual = ({setScreen}) => {
   const [playable, setPlayable] = useState(true);
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
@@ -61,6 +60,9 @@ const GameVisual = () => {
   }
 
   let tries = 6 - wrongLetters.length
+  function checkLeaderboard() {
+    setScreen('leaderboard');
+  }
 
   return (
     <>
@@ -71,7 +73,7 @@ const GameVisual = () => {
         <Tries tries={tries}/>
       </div>
       <WrongLetters wrongLetters={wrongLetters} />
-      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} tries={tries}/>
+      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} checkLeaderboard={checkLeaderboard}/>
       <Notification showNotification={showNotification} />
     </>
   );

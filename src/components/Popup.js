@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 import { checkWin } from '../helpers/helpers';
 
-const Popup = ({correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries}) => {
+import { API } from "aws-amplify";
+import * as mutations from '../graphql/mutations';
+
+const Popup = ({correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries, checkLeaderboard}) => {
   let finalMessage = '';
   let score = ''
   let finalMessageRevealWord = '';
   let playable = true;
 
   if( checkWin(correctLetters, wrongLetters, selectedWord) === 'win' ) {
-    finalMessage = 'You won! 😃';
-    score = 'Final Score: ' + tries;
+    finalMessage = 'Congratulations! You won!';
     playable = false;
   } else if( checkWin(correctLetters, wrongLetters, selectedWord) === 'lose' ) {
-    finalMessage = 'Unfortunately you lost. 😕';
+    finalMessage = 'Unfortunately, you lost.';
     finalMessageRevealWord = `...the word was: ${selectedWord}`;
     score = 'Final Score: ' + tries;
     playable = false;
@@ -29,6 +31,7 @@ const Popup = ({correctLetters, wrongLetters, selectedWord, setPlayable, playAga
         <h3>{finalMessageRevealWord}</h3>
         <h3>{score}</h3>
         <button onClick={playAgain}>Play Again</button>
+        <button onClick={checkLeaderboard}>Check Leaderboad</button>
       </div>
     </div>
   )
