@@ -139,3 +139,12 @@ h1 {
 .notification-container.show {
   transform: translateY(-50px);
 }
+
+.back-track-btn {
+  width: fit-content;
+  border: black 2px solid;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: #8d4d4d;
+  cursor: pointer;
+}

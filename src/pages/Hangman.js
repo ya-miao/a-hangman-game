@@ -8,7 +8,7 @@ const Hangman = ({setScreen, playerId}) => {
   return (
     <Container sx={{ m: 4 }}>
       <Stack direction='column' spacing={2}>
-        <GameInput />
+        <button className="back-track-btn" onClick={e => setScreen('intro')}>Back to Menu</button>
         <GameVisual setScreen={setScreen} playerId={playerId}/>
       </Stack>
     </Container>

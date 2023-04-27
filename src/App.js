@@ -50,8 +50,9 @@ const App = () => {
       {screen === 'hosted' ?
         <>Hosted game</> : screen === 'single' ?
           <Hangman setScreen={setScreen} playerId={playerId} /> : screen === 'leaderboard' ?
-            <Leaderboard /> :
+            <Leaderboard setScreen={setScreen}/> : screen === 'intro' ?
               <IntroScreen setScreen={setScreen} handleClickOpenDialog={handleClickOpenDialog}/>
+              : <></>
       }
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogContent>

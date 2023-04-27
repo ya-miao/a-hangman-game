@@ -78,7 +78,7 @@ const GameVisual = ({setScreen, playerId}) => {
         <Tries tries={tries}/>
       </div>
       <WrongLetters wrongLetters={wrongLetters} />
-      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} checkLeaderboard={checkLeaderboard} playerId={playerId} />
+      <Popup setScreen={setScreen} correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} checkLeaderboard={checkLeaderboard} playerId={playerId} />
       <Notification showNotification={showNotification} />
     </>
   );

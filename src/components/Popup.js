@@ -4,7 +4,7 @@ import { checkWin } from '../helpers/helpers';
 import { API } from "aws-amplify";
 import * as mutations from '../graphql/mutations';
 
-const Popup = ({correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries, checkLeaderboard, playerId}) => {
+const Popup = ({setScreen, correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries, checkLeaderboard, playerId}) => {
   let finalMessage = '';
   let finalMessageRevealWord = '';
   let playable = true;
@@ -53,6 +53,7 @@ const Popup = ({correctLetters, wrongLetters, selectedWord, setPlayable, playAga
         <h2>{finalMessage}</h2>
         <h3>{finalMessageRevealWord}</h3>
         <button onClick={playAgain}>Play Again</button>
+        <button onClick={e => setScreen('intro')}>Main Menu</button>
         <button onClick={checkLeaderboard}>Check Leaderboad</button>
       </div>
     </div>
