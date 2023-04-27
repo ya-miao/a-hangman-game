@@ -49,7 +49,7 @@ const App = () => {
     <>
       {screen === 'hosted' ?
         <>Hosted game</> : screen === 'single' ?
-          <Hangman setScreen={setScreen}/> : screen === 'leaderboard' ?
+          <Hangman setScreen={setScreen} playerId={playerId} /> : screen === 'leaderboard' ?
             <Leaderboard /> :
               <IntroScreen setScreen={setScreen} handleClickOpenDialog={handleClickOpenDialog}/>
       }

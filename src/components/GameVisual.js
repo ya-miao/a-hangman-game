@@ -14,7 +14,7 @@ const words = ['application', 'programming', 'interface', 'wizard'];
 // TASK - We should be able to set a selected word and create a link to share for that game
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
-const GameVisual = ({setScreen}) => {
+const GameVisual = ({setScreen, playerId}) => {
   const [playable, setPlayable] = useState(true);
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
@@ -64,6 +64,11 @@ const GameVisual = ({setScreen}) => {
     setScreen('leaderboard');
   }
 
+  useEffect(() => {
+    console.log('Hangman playerId:');
+    console.log(playerId);
+  }, [playerId]);
+
   return (
     <>
       <Header />
@@ -73,7 +78,7 @@ const GameVisual = ({setScreen}) => {
         <Tries tries={tries}/>
       </div>
       <WrongLetters wrongLetters={wrongLetters} />
-      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} checkLeaderboard={checkLeaderboard}/>
+      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} checkLeaderboard={checkLeaderboard} playerId={playerId} />
       <Notification showNotification={showNotification} />
     </>
   );
