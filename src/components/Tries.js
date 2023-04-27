@@ -3,7 +3,7 @@ import React from 'react'
 const Tries = ({tries}) => {
   return (
     <div className="tries-container">
-      <h2>Tries: {tries}</h2>
+      <h2>Lives: <span>{tries} ❤️</span></h2>
     </div>
   )
 }

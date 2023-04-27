@@ -71,7 +71,7 @@ const GameVisual = ({setScreen, playerId}) => {
 
   return (
     <>
-      <Header />
+      <Header setScreen={setScreen}/>
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />

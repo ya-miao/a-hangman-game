@@ -6,12 +6,12 @@ const WrongLetters = ({ wrongLetters }) => {
   return (
     <div className="wrong-letters-container">
         {wrongLetters.length > 0 && 
-          <h2>Letters Used:</h2>
+          <h2>Wrong Letters:</h2>
         }
-        <Stack direction={"row"} spacing={1}>
+        <Stack direction={"row"} spacing={1} m={0}>
         {wrongLetters
           .map((letter, i) => 
-          <h2 key={i}>{letter}</h2>
+          <h2 className='wrong-letters' key={i}>{letter}</h2>
         )}
         </Stack>
     </div>

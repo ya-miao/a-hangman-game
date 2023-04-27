@@ -8,16 +8,16 @@ const IntroScreen = ({ setScreen, handleClickOpenDialog }) => {
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <Stack spacing={3} sx={{ alignItems: 'center' }}>
         <Stack alignItems="center">
-          <Typography variant="h1" sx={{ fontFamily: 'Montserrat' }}>Hangman</Typography>
-          <Typography variant="body1" sx={{ fontFamily: 'Sacramento' }}>online</Typography>
+          <Typography variant="h1" sx={{ fontFamily: 'Montserrat', color: "#ffe478" }}>Hangman</Typography>
+          <Typography variant="h5" sx={{ fontFamily: 'Sacramento', color: "white" }}>online</Typography>
         </Stack>
         <Stack direction='column' spacing={2}>
-          <Button onClick={() => {
+          <button onClick={() => {
             handleClickOpenDialog(true);
-          }} sx={{ fontSize: '18px', borderRadius: '8px', width: '300px', height: '50px', border: '1px solid #000000', color: '#000000' }}>Single Player</Button>
-          <Button onClick={() => {
+          }} className="btns-styles slide_right">Single Player</button>
+          <button onClick={() => {
             setScreen('hosted');
-          }} sx={{ fontSize: '18px', borderRadius: '8px', width: '300px', height: '50px', border: '1px solid #000000', color: '#000000' }}>Host Game</Button>
+          }} className="btns-styles slide_right">Host Game</button>
         </Stack>
       </Stack>
       

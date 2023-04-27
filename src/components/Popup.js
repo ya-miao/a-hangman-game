@@ -38,7 +38,7 @@ const Popup = ({setScreen, correctLetters, wrongLetters, selectedWord, setPlayab
     playable = false;
   } else if( checkWin(correctLetters, wrongLetters, selectedWord) === 'lose' ) {
     deletePlayer();
-    finalMessage = 'Unfortunately, you lost.';
+    finalMessage = 'Sorry, you lost :(';
     finalMessageRevealWord = `...the word was: ${selectedWord}`;
     playable = false;
   }
