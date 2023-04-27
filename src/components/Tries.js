@@ -1,7 +1,6 @@
 import React from 'react'
 
-const Tries = ({wrongLetters}) => {
-    let tries = 6 - wrongLetters.length
+const Tries = ({tries}) => {
   return (
     <div className="tries-container">
       <h2>Tries: {tries}</h2>

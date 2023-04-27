@@ -60,16 +60,18 @@ const GameVisual = () => {
     selectedWord = words[random];
   }
 
+  let tries = 6 - wrongLetters.length
+
   return (
     <>
       <Header />
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
-        <Tries wrongLetters={wrongLetters}/>
+        <Tries tries={tries}/>
       </div>
       <WrongLetters wrongLetters={wrongLetters} />
-      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
+      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} tries={tries}/>
       <Notification showNotification={showNotification} />
     </>
   );
