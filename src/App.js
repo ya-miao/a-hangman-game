@@ -8,6 +8,7 @@ import IntroScreen from './pages/IntroScreen';
 
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
+import Leaderboard from './pages/LeaderBoard';
 Amplify.configure(awsconfig);
 
 const App = () => {
@@ -15,13 +16,14 @@ const App = () => {
   const [screen, setScreen] = useState('intro');
 
   return (
-    <>
-      {screen === 'hosted' ?
-        <>Hosted game</> : screen === 'single' ?
-          <Hangman /> :
-            <IntroScreen setScreen={setScreen} />
-      }
-    </>
+    // <>
+    //   {screen === 'hosted' ?
+    //     <>Hosted game</> : screen === 'single' ?
+    //       <Hangman /> :
+    //         <IntroScreen setScreen={setScreen} />
+    //   }
+    // </>
+    <Leaderboard></Leaderboard>
   );
 }
 
