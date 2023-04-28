@@ -52,7 +52,7 @@ const Hangman = ({ playerId }) => {
   return (
     <Container sx={{ m: 4 }}>
       <Stack direction='column'>
-        <GameVisual playerId={playerId} words={words} selectedWord={selectedWord}/>
+      <GameVisual playerId={playerId} words={words} selectedWord={selectedWord} setSelectedWord={setSelectedWord} />
       </Stack>
     </Container>
   );

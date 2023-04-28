@@ -10,7 +10,7 @@ import Tries from "./Tries";
 
 import { useNavigate } from "react-router-dom";
 
-const GameVisual = ({ playerId, words, selectedWord}) => {
+const GameVisual = ({ playerId, words, selectedWord, setSelectedWord}) => {
 
   const navigate = useNavigate();
 
@@ -52,9 +52,8 @@ const GameVisual = ({ playerId, words, selectedWord}) => {
 
     setCorrectLetters([]);
     setWrongLetters([]);
-
-    const random = Math.floor(Math.random() * words.length);
-    selectedWord = words[random];
+    
+    setSelectedWord(words[Math.floor(Math.random() * words.length)]);
   }
 
   let tries = 6 - wrongLetters.length
