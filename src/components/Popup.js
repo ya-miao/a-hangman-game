@@ -6,7 +6,7 @@ import * as mutations from '../graphql/mutations';
 
 import { useNavigate } from "react-router-dom";
 
-const Popup = ({ setScreen, correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries, checkLeaderboard, playerId }) => {
+const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries, checkLeaderboard, playerId }) => {
   const navigate = useNavigate();
 
   let finalMessage = '';
@@ -23,29 +23,27 @@ const Popup = ({ setScreen, correctLetters, wrongLetters, selectedWord, setPlaya
         }
       }
     });
-    console.log('updatedPlayer: ');
-    console.log(updatedPlayer);
   };
 
-  const deletePlayer = async () => {
-    const deletedPlayer = await API.graphql({
-      query: mutations.deletePlayer,
-      variables: {
-        input: {
-          id: playerId
-        }
-      }
-    });
-    console.log('deletedPlayer: ');
-    console.log(deletedPlayer);
-  };
+  // const deletePlayer = async () => {
+  //   const deletedPlayer = await API.graphql({
+  //     query: mutations.deletePlayer,
+  //     variables: {
+  //       input: {
+  //         id: playerId
+  //       }
+  //     }
+  //   });
+  //   console.log('deletedPlayer: ');
+  //   console.log(deletedPlayer);
+  // };
 
   if (checkWin(correctLetters, wrongLetters, selectedWord) === 'win') {
     updateScore();
     finalMessage = 'Congratulations! You won!';
     playable = false;
   } else if (checkWin(correctLetters, wrongLetters, selectedWord) === 'lose') {
-    deletePlayer();
+    // deletePlayer();
     finalMessage = 'Sorry, you lost :(';
     finalMessageRevealWord = `...the word was: ${selectedWord}`;
     playable = false;
@@ -74,4 +72,4 @@ const Popup = ({ setScreen, correctLetters, wrongLetters, selectedWord, setPlaya
   )
 }
 
-export default Popup
+export default Popup;

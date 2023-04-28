@@ -10,7 +10,7 @@ import Tries from "./Tries";
 
 import { useNavigate } from "react-router-dom";
 
-const GameVisual = ({setScreen, playerId, words, selectedWord}) => {
+const GameVisual = ({ playerId, words, selectedWord}) => {
 
   const navigate = useNavigate();
 
@@ -62,21 +62,16 @@ const GameVisual = ({setScreen, playerId, words, selectedWord}) => {
     navigate("/leaderboard");
   }
 
-  useEffect(() => {
-    console.log('Hangman playerId:');
-    console.log(playerId);
-  }, [playerId]);
-
   return (
     <>
-      <Header setScreen={setScreen}/>
+      <Header />
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
         <Tries tries={tries}/>
       </div>
       <WrongLetters wrongLetters={wrongLetters} />
-      <Popup setScreen={setScreen} correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} checkLeaderboard={checkLeaderboard} playerId={playerId} />
+      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} checkLeaderboard={checkLeaderboard} playerId={playerId} />
       <Notification showNotification={showNotification} />
     </>
   );

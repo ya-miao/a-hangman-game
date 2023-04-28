@@ -18,17 +18,16 @@ Amplify.configure(awsconfig);
 
 const App = () => {
 
-  const [screen, setScreen] = useState('intro');
-
   const [openSingle, setOpenSingle] = useState(false);
   const [openHosted, setOpenHosted] = useState(false);
 
   const [playerName, setPlayerName] = useState('');
   const [playerId, setPlayerId] = useState('');
 
+  const [ hostedWord, setHostedWord ] = useState('');
+  const [ hostedId, setHostedId ] = useState('');
 
   const handleOpenSingle = () => {
-    console.log('OPEN')
     setOpenSingle(true);
   };
 
@@ -53,15 +52,13 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<IntroScreen handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} />} />
-          {/* <Route index element={<Home />} /> */}
-          <Route path="/hangman" element={<Hangman setScreen={setScreen} playerId={playerId} />} />
-          <Route path="/leaderboard" element={<Leaderboard setScreen={setScreen} />} />
-          <Route path="/hosted" element={<>Hosted game</>} />
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="/" element={<IntroScreen handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} hosted={false} />} />
+          <Route path="/hangman/*" element={<Hangman playerId={playerId} />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/hosted/*" element={<IntroScreen handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} hosted={true} />} />
         </Routes>
-        <SingleDialog setScreen={setScreen} setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />
-        <HostedDialog setScreen={setScreen} setOpenHosted={setOpenHosted} openHosted={openHosted} handleCloseHosted={handleCloseHosted} />
+        <SingleDialog setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />
+        <HostedDialog setOpenHosted={setOpenHosted} openHosted={openHosted} handleCloseHosted={handleCloseHosted} hostedWord={hostedWord} setHostedWord={setHostedWord} hostedId={hostedId} setHostedId={setHostedId} />
       </BrowserRouter >
     </>
   );

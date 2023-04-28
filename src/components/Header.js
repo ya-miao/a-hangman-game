@@ -3,8 +3,7 @@ import { Stack, Typography } from '@mui/material'
 
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ setScreen }) => {
-
+const Header = () => {
   const navigate = useNavigate();
 
   return (

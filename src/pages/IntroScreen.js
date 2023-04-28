@@ -2,7 +2,7 @@ import { Button, Box, Stack, Typography } from "@mui/material";
 
 import React from 'react';
 
-const IntroScreen = ({ handleOpenSingle, handleOpenHosted }) => {
+const IntroScreen = ({ hosted, handleOpenSingle, handleOpenHosted }) => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <Stack spacing={3} sx={{ alignItems: 'center' }}>
@@ -10,10 +10,18 @@ const IntroScreen = ({ handleOpenSingle, handleOpenHosted }) => {
           <Typography variant="h1" sx={{ fontFamily: 'Montserrat', color: "#ffe478" }}>Hangman</Typography>
           <Typography variant="h5" sx={{ fontFamily: 'Sacramento', color: "white" }}>online</Typography>
         </Stack>
-        <Stack direction='column' spacing={2} marginTop={3}>
-          <button onClick={() => {handleOpenSingle(true);}} className="btns-styles slide_right">Single Player</button>
-          <button onClick={() => {handleOpenHosted(true);}} className="btns-styles slide_right">Host Game</button>
-        </Stack>
+        { hosted ? 
+          <Stack direction='column' spacing={2} marginTop={3} alignItems='center'>
+            <Typography variant="overline" sx={{ fontFamily: 'Sacramento', color: "white" }}>You've received a shared link!</Typography>
+            <button onClick={() => {handleOpenSingle(true);}} className="btns-styles slide_right">Play Hosted Game</button>
+          </Stack>
+          :
+          <Stack direction='column' spacing={2} marginTop={3} alignItems='center'>
+              <button onClick={() => {handleOpenSingle(true);}} className="btns-styles slide_right">Single Player</button>
+              <button onClick={() => {handleOpenHosted(true);}} className="btns-styles slide_right">Host Game</button>
+            </Stack>
+        }
+
       </Stack>
     </Box>
   );

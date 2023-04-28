@@ -7,7 +7,7 @@ import * as queries from '../graphql/queries';
 
 import { useNavigate } from "react-router-dom";
 
-const Leaderboard = ({ setScreen }) => {
+const Leaderboard = () => {
 
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const Leaderboard = ({ setScreen }) => {
             navigate('/');
             }}>Menu</button>
           <button className="btns-styles slide_right" onClick={e => {
-            navigate('/single');
+            navigate('/hangman');
             }}>Play</button>
         </Stack>
         <Stack container direction='row' justifyContent="center" alignItems="center" gap={2}>

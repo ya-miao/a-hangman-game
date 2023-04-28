@@ -1,9 +1,16 @@
+import { useLocation } from 'react-router-dom';
+
 import { Container, Stack } from "@mui/material";
 
 import GameVisual from "../components/GameVisual";
+import { useEffect, useState } from 'react';
 
-// TASK - add prop here to determine if hosted or not
-const Hangman = ({ setScreen, playerId }) => {
+import { API } from 'aws-amplify';
+import * as queries from '../graphql/queries';
+
+const Hangman = ({ playerId }) => {
+  const location = useLocation();
+  const getHostedId = location.pathname.replace('/hangman/', '')
 
   const words = ['application', 'programming', 'interface', 'wizard',
     'position', 'mislead', 'performance', 'shrink', 'evolution', 'strength', 'lighthall',
@@ -15,14 +22,29 @@ const Hangman = ({ setScreen, playerId }) => {
     'tacos', 'dumplings', 'margarita', 'californa', 'paris', 'country', 'brazil', 'soccer',
     'chelsea', 'argentina', 'ocean', 'mountain', 'alligator', 'parrot'
   ];
+  
+  const [selectedWord, setSelectedWord] = useState('');
 
-  // TASK - We should be able to set a selected word and create a link to share for that game
-  let selectedWord = words[Math.floor(Math.random() * words.length)];
+  useEffect(() => {
+    if(getHostedId !== '/hangman') {
+      getHostedGame();
+    } else {
+      setSelectedWord(words[Math.floor(Math.random() * words.length)]);
+    }
+  }, [])
+
+  const getHostedGame = async () => {
+    const oneGame = await API.graphql({
+      query: queries.getHostedGame,
+      variables: { id: getHostedId }
+    });
+    setSelectedWord(oneGame?.data?.getHostedGame?.word);
+  };
 
   return (
     <Container sx={{ m: 4 }}>
       <Stack direction='column'>
-        <GameVisual setScreen={setScreen} playerId={playerId} words={words} selectedWord={selectedWord}/>
+        <GameVisual playerId={playerId} words={words} selectedWord={selectedWord}/>
       </Stack>
     </Container>
   );
