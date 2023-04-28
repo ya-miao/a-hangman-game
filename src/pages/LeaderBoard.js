@@ -7,7 +7,7 @@ import * as queries from '../graphql/queries';
 
 import { useNavigate } from "react-router-dom";
 
-const Leaderboard = () => {
+const Leaderboard = ({ playerId }) => {
 
   const navigate = useNavigate();
 
@@ -55,7 +55,7 @@ const Leaderboard = () => {
             <div>Score</div>
           </Stack>
           {playersList?.slice(0, 10).map((player, index) => (
-            <Paper key={index} sx={{ p: 2, borderRadius: 0, color: "black", fontWeight: "bold" }}>
+            <Paper variant={player?.id === playerId ? 'outlined' : 'elevation'} key={index} sx={{ bgcolor: player?.id === playerId ? '#ffe478' : 'white', p: 2, borderRadius: 0, color: "black", fontWeight: "bold" }}>
               <Stack container alignItems="center" direction='row' justifyContent="space-between">
                 <Grid>
                   {index + 1}

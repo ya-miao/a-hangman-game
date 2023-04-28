@@ -54,7 +54,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<IntroScreen handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} hosted={false} />} />
           <Route path="/hangman/*" element={<Hangman playerId={playerId} />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/leaderboard" element={<Leaderboard playerId={playerId} />} />
           <Route path="/hosted/*" element={<IntroScreen handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} hosted={true} />} />
         </Routes>
         <SingleDialog setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />

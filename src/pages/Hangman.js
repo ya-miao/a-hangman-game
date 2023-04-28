@@ -21,7 +21,7 @@ const Hangman = ({ playerId }) => {
     'bakery', 'manhattan', 'brooklyn', 'shazam', 'spiderman', 'superman', 'batman', 'amazon',
     'drake', 'kendrick', 'matilda', 'memes', 'cheetos', 'dorritos', 'fanta', 'pepsi',
     'playstation', 'xbox', 'samsung', 'ikea', 'walmart', 'target', 'tesla', 'ebay',
-    'tacos', 'dumplings', 'margarita', 'californa', 'paris', 'country', 'brazil', 'soccer',
+    'tacos', 'dumplings', 'margarita', 'california', 'paris', 'country', 'brazil', 'soccer',
     'chelsea', 'argentina', 'ocean', 'mountain', 'alligator', 'parrot'
   ];
   
