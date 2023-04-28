@@ -2,20 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 
 import { useEffect, useState } from 'react';
-import { Button } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 
-import * as mutations from './graphql/mutations';
-
-import Hangman from './pages/Hangman';
+import Hangman from './pages/Hangman's;
 import IntroScreen from './pages/IntroScreen';
+import SingleDialog from './components/SingleDialog';
+import HostedDialog from './components/HostedDialog';
 
-import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import Leaderboard from './pages/LeaderBoard';
 Amplify.configure(awsconfig);
@@ -24,20 +17,27 @@ const App = () => {
 
   const [screen, setScreen] = useState('intro');
 
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openSingle, setOpenSingle] = useState(false);
+  const [openHosted, setOpenHosted] = useState(false);
+  
   const [playerName, setPlayerName] = useState('');
   const [playerId, setPlayerId] = useState('');
 
-  const handleClickOpenDialog = () => {
-    setOpenDialog(true);
+
+  const handleOpenSingle = () => {
+    setOpenSingle(true);
   };
 
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
+  const handleCloseSingle = () => {
+    setOpenSingle(false);
   };
 
-  const handleInputChange = (event) => {
-    setPlayerName(event.target.value)
+  const handleOpenHosted = () => {
+    setOpenHosted(true);
+  };
+
+  const handleCloseHosted = () => {
+    setOpenHosted(false);
   };
 
   useEffect(() => {
@@ -51,10 +51,12 @@ const App = () => {
         <>Hosted game</> : screen === 'single' ?
           <Hangman setScreen={setScreen} playerId={playerId} /> : screen === 'leaderboard' ?
             <Leaderboard setScreen={setScreen}/> : screen === 'intro' ?
-              <IntroScreen setScreen={setScreen} handleClickOpenDialog={handleClickOpenDialog}/>
+              <IntroScreen setScreen={setScreen} handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} />
               : <></>
       }
-      <Dialog open={openDialog} onClose={handleCloseDialog}>
+      <SingleDialog setScreen={setScreen} setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />
+      <HostedDialog setScreen={setScreen} setOpenHosted={setOpenHosted} openHosted={openHosted} handleCloseHosted={handleCloseHosted} />
+      {/* <Dialog open={openSingle} onClose={handleCloseSingle}>
         <DialogContent>
           <DialogContentText>
             Enter your player name.
@@ -70,7 +72,7 @@ const App = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button onClick={handleCloseSingle}>Cancel</Button>
           <Button onClick={async () => {
             const newPlayer = await API.graphql({ 
               query: mutations.createPlayer, 
@@ -78,11 +80,11 @@ const App = () => {
             });
 
             setPlayerId(newPlayer?.data?.createPlayer?.id);
-            setOpenDialog(false);
+            setOpenSingle(false);
             setScreen('single');
           }}>Play</Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
     </>
   );
 }

@@ -2,7 +2,7 @@ import { Button, Box, Stack, Typography } from "@mui/material";
 
 import React from 'react';
 
-const IntroScreen = ({ setScreen, handleClickOpenDialog }) => {
+const IntroScreen = ({ setScreen, handleOpenSingle, handleOpenHosted }) => {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -12,8 +12,8 @@ const IntroScreen = ({ setScreen, handleClickOpenDialog }) => {
           <Typography variant="h5" sx={{ fontFamily: 'Sacramento', color: "white" }}>online</Typography>
         </Stack>
         <Stack direction='column' spacing={2} marginTop={3}>
-          <button onClick={() => {handleClickOpenDialog(true);}} className="btns-styles slide_right">Single Player</button>
-          <button onClick={() => {setScreen('hosted');}} className="btns-styles slide_right">Host Game</button>
+          <button onClick={() => {handleOpenSingle(true);}} className="btns-styles slide_right">Single Player</button>
+          <button onClick={() => {handleOpenHosted(true);}} className="btns-styles slide_right">Host Game</button>
         </Stack>
       </Stack>
       
