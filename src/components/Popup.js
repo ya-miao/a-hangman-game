@@ -25,25 +25,11 @@ const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAg
     });
   };
 
-  // const deletePlayer = async () => {
-  //   const deletedPlayer = await API.graphql({
-  //     query: mutations.deletePlayer,
-  //     variables: {
-  //       input: {
-  //         id: playerId
-  //       }
-  //     }
-  //   });
-  //   console.log('deletedPlayer: ');
-  //   console.log(deletedPlayer);
-  // };
-
   if (checkWin(correctLetters, wrongLetters, selectedWord) === 'win') {
     updateScore();
     finalMessage = 'Congratulations! You won!';
     playable = false;
   } else if (checkWin(correctLetters, wrongLetters, selectedWord) === 'lose') {
-    // deletePlayer();
     finalMessage = 'Sorry, you lost :(';
     finalMessageRevealWord = `...the word was: ${selectedWord}`;
     playable = false;
