@@ -11,13 +11,9 @@ const IntroScreen = ({ setScreen, handleClickOpenDialog }) => {
           <Typography variant="h1" sx={{ fontFamily: 'Montserrat', color: "#ffe478" }}>Hangman</Typography>
           <Typography variant="h5" sx={{ fontFamily: 'Sacramento', color: "white" }}>online</Typography>
         </Stack>
-        <Stack direction='column' spacing={2}>
-          <button onClick={() => {
-            handleClickOpenDialog(true);
-          }} className="btns-styles slide_right">Single Player</button>
-          <button onClick={() => {
-            setScreen('hosted');
-          }} className="btns-styles slide_right">Host Game</button>
+        <Stack direction='column' spacing={2} marginTop={3}>
+          <button onClick={() => {handleClickOpenDialog(true);}} className="btns-styles slide_right">Single Player</button>
+          <button onClick={() => {setScreen('hosted');}} className="btns-styles slide_right">Host Game</button>
         </Stack>
       </Stack>
       

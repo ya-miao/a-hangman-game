@@ -14,6 +14,7 @@
   --videogame-purple: #5e315b;
   --yellow: #ffe478;
   --gray: #646365;
+  --light-gray: #b8b5b9;
 }
 
 body, #root {
@@ -33,8 +34,8 @@ body, #root {
   height: 350px;
   width: 900px;
   color: var(--off-black);
-  background-color: #b8b5b9;
-  border-bottom: var(--off-black) solid 2px;
+  background-color: var(--light-gray);
+  border-bottom: black solid 2px;
 }
 
 .figure-container {
@@ -60,25 +61,25 @@ body, #root {
 .wrong-letters-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 900px;
   gap: 10px;
-  background-color: var(--yellow);
+  background-color: #ffe478c9;
   padding: 0.5rem;
 }
 
 .wrong-letters-container h2 {
   font-size: 24px;
-  /* text-transform: uppercase; */
 }
 
 .wrong-letters {
   width: 35px;
-  /* border: var(--darkblue-color) 2px solid; */
   color: white;
   padding: 0.5rem;
   border-radius: 5px;
   background-color: var(--darkblue-color);
   border: var(--off-black) solid 2px;
+  text-align: center;
 }
 
 .word {
@@ -114,7 +115,7 @@ body, #root {
 }
 
 .popup {
-  background: #d08159;
+  background: var(--darkblue-color);
   border-radius: 5px;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -125,11 +126,18 @@ body, #root {
   cursor: pointer;
   background: white;
   color: black;
-  border: 0;
+  border: 2px solid black;
+  border-radius: 5px;
   margin-top: 20px;
   padding: 12px 20px;
   font-size: 16px;
 }
+
+.popup h2{
+  color: var(--yellow);
+}
+
+.popup h3 {color: var(--light-gray)}
 
 .popup button:active {
   transform: scale(0.98);
@@ -140,10 +148,11 @@ body, #root {
 }
 
 .notification-container {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--darkblue-color);
   border-radius: 10px 10px 0 0;
   padding: 15px 20px;
   position: absolute;
+  color: white;
   bottom: -50px;
   transition: transform 0.3s ease-in-out;
 }
@@ -186,4 +195,9 @@ body, #root {
 .slide_right:hover {
   box-shadow: inset 400px 0 0 0 var(--yellow);
   color: var(--off-black);
+}
+
+.leaderboard-header div {
+  color: white;
+  font-weight: bold;
 }
