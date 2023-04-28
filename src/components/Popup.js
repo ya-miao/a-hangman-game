@@ -4,9 +4,10 @@ import { Alert, Snackbar, Stack } from '@mui/material';
 import { API } from "aws-amplify";
 import * as mutations from '../graphql/mutations';
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries, checkLeaderboard, playerId }) => {
+  const location = useLocation();
   const navigate = useNavigate();
 
   let alreadyWon = false;
@@ -71,7 +72,7 @@ const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAg
           </Stack>
           <Stack direction="row" gap={1}>
             <button onClick={() => {
-              if (alreadyWon) {
+              if (alreadyWon && location.pathname !== '/hangman') {
                 setOpenAlert(true);
               } else {
                 playAgain();
