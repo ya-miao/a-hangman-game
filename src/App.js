@@ -43,11 +43,6 @@ const App = () => {
     setOpenHosted(false);
   };
 
-  useEffect(() => {
-    console.log('playerId:');
-    console.log(playerId);
-  }, [playerId]);
-
   return (
     <>
       <BrowserRouter>

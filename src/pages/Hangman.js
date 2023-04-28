@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Container, Stack } from "@mui/material";
+import { Container } from "@mui/material";
 
 import GameVisual from "../components/GameVisual";
 import { useEffect, useState } from 'react';
@@ -53,9 +53,7 @@ const Hangman = ({ playerId }) => {
 
   return (
     <Container sx={{ m: 4 }}>
-      <Stack direction='column'>
       <GameVisual playerId={playerId} words={words} selectedWord={selectedWord} setSelectedWord={setSelectedWord} />
-      </Stack>
     </Container>
   );
 }
