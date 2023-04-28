@@ -3,7 +3,7 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 
-import Hangman from './pages/Hangman's;
+import Hangman from './pages/Hangman';
 import IntroScreen from './pages/IntroScreen';
 import SingleDialog from './components/SingleDialog';
 import HostedDialog from './components/HostedDialog';
@@ -56,35 +56,6 @@ const App = () => {
       }
       <SingleDialog setScreen={setScreen} setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />
       <HostedDialog setScreen={setScreen} setOpenHosted={setOpenHosted} openHosted={openHosted} handleCloseHosted={handleCloseHosted} />
-      {/* <Dialog open={openSingle} onClose={handleCloseSingle}>
-        <DialogContent>
-          <DialogContentText>
-            Enter your player name.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="playerName"
-            label="Player Name"
-            fullWidth
-            variant="standard"
-            onChange={handleInputChange}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseSingle}>Cancel</Button>
-          <Button onClick={async () => {
-            const newPlayer = await API.graphql({ 
-              query: mutations.createPlayer, 
-              variables: { input: { player: playerName } }
-            });
-
-            setPlayerId(newPlayer?.data?.createPlayer?.id);
-            setOpenSingle(false);
-            setScreen('single');
-          }}>Play</Button>
-        </DialogActions>
-      </Dialog> */}
     </>
   );
 }
