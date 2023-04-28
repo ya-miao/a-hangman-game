@@ -8,7 +8,7 @@ const WrongLetters = ({ wrongLetters }) => {
         {wrongLetters.length > 0 && 
           <h2>Wrong Letters:</h2>
         }
-        <Stack direction={"row"} spacing={1} m={0}>
+        <Stack direction={"row"} spacing={1}>
         {wrongLetters
           .map((letter, i) => 
           <h2 className='wrong-letters' key={i}>{letter}</h2>
