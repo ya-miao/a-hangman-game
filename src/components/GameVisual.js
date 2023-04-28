@@ -8,22 +8,12 @@ import Notification from './Notification';
 import { showNotification as show, checkWin } from '../helpers/helpers';
 import Tries from "./Tries";
 
-// TASK - We can come up with more words
-const words = ['application', 'programming', 'interface', 'wizard', 
-'position', 'mislead', 'performance', 'shrink', 'evolution', 'strength', 'lighthall',
-'spotify', 'youtube', 'netflix', 'shrek', 'spiderman', 'superman', 'batman',
-'itunes', 'iphone', 'android', 'galaxy', 'mario', 'nike', 'adidas', 'restaurant',
-'bakery', 'manhattan', 'brooklyn', 'shazam', 'spiderman', 'superman', 'batman', 'amazon',
-'drake', 'kendrick', 'matilda', 'memes', 'cheetos', 'dorritos', 'fanta', 'pepsi',
-'playstation', 'xbox', 'samsung', 'ikea', 'walmart', 'target', 'tesla', 'ebay',
-'tacos', 'dumplings', 'margarita', 'californa', 'paris', 'country', 'brazil', 'soccer',
-'chelsea', 'argentina', 'ocean', 'mountain', 'alligator', 'parrot'
-];
+import { useNavigate } from "react-router-dom";
 
-// TASK - We should be able to set a selected word and create a link to share for that game
-let selectedWord = words[Math.floor(Math.random() * words.length)];
+const GameVisual = ({setScreen, playerId, words, selectedWord}) => {
 
-const GameVisual = ({setScreen, playerId}) => {
+  const navigate = useNavigate();
+
   const [playable, setPlayable] = useState(true);
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
@@ -60,7 +50,6 @@ const GameVisual = ({setScreen, playerId}) => {
   function playAgain() {
     setPlayable(true);
 
-    // Empty Arrays
     setCorrectLetters([]);
     setWrongLetters([]);
 
@@ -70,7 +59,7 @@ const GameVisual = ({setScreen, playerId}) => {
 
   let tries = 6 - wrongLetters.length
   function checkLeaderboard() {
-    setScreen('leaderboard');
+    navigate("/leaderboard");
   }
 
   useEffect(() => {

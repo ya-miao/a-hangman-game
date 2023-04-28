@@ -5,14 +5,14 @@ import { Box, Divider, Grid, Stack, Typography, Paper } from '@mui/material';
 import { API } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 
+import { useNavigate } from "react-router-dom";
+
 const Leaderboard = ({ setScreen }) => {
+
+  const navigate = useNavigate();
 
   const [playersList, setPlayersList] = useState([]);
   const [leaderboardList, setLeaderboardList] = useState([]);
-
-  // TO DO:
-  // We need to sort the playersList and set it to leaderboardList
-  // Highest score to lowest, and maybe display only the top 10 (or some arbitrary number)
 
   const fetchPlayers = async () => {
     const allPlayers = await API.graphql({ query: queries.listPlayers });
@@ -28,8 +28,12 @@ const Leaderboard = ({ setScreen }) => {
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <Stack sx={{ FontFamily: 'Raleway', width: "1000px" }}>
         <Stack container direction='row' justifyContent="space-between">
-          <button className="btns-styles slide_right" onClick={e => setScreen('intro')}>Menu</button>
-          <button className="btns-styles slide_right" onClick={e => setScreen('single')}>Play</button>
+          <button className="btns-styles slide_right" onClick={e => {
+            navigate('/');
+            }}>Menu</button>
+          <button className="btns-styles slide_right" onClick={e => {
+            navigate('/single');
+            }}>Play</button>
         </Stack>
         <Stack container direction='row' justifyContent="center" alignItems="center" gap={2}>
           <Typography variant='h2' sx={{ fontFamily: "Lucida Console, Monaco, monospace", textAlign: "center", color: "#ffe478" }}>

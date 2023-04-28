@@ -3,6 +3,9 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Hangman from './pages/Hangman';
 import IntroScreen from './pages/IntroScreen';
 import SingleDialog from './components/SingleDialog';
@@ -19,12 +22,13 @@ const App = () => {
 
   const [openSingle, setOpenSingle] = useState(false);
   const [openHosted, setOpenHosted] = useState(false);
-  
+
   const [playerName, setPlayerName] = useState('');
   const [playerId, setPlayerId] = useState('');
 
 
   const handleOpenSingle = () => {
+    console.log('OPEN')
     setOpenSingle(true);
   };
 
@@ -47,15 +51,18 @@ const App = () => {
 
   return (
     <>
-      {screen === 'hosted' ?
-        <>Hosted game</> : screen === 'single' ?
-          <Hangman setScreen={setScreen} playerId={playerId} /> : screen === 'leaderboard' ?
-            <Leaderboard setScreen={setScreen}/> : screen === 'intro' ?
-              <IntroScreen setScreen={setScreen} handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} />
-              : <></>
-      }
-      <SingleDialog setScreen={setScreen} setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />
-      <HostedDialog setScreen={setScreen} setOpenHosted={setOpenHosted} openHosted={openHosted} handleCloseHosted={handleCloseHosted} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<IntroScreen handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} />} />
+          {/* <Route index element={<Home />} /> */}
+          <Route path="/hangman" element={<Hangman setScreen={setScreen} playerId={playerId} />} />
+          <Route path="/leaderboard" element={<Leaderboard setScreen={setScreen} />} />
+          <Route path="/hosted" element={<>Hosted game</>} />
+          {/* <Route path="*" element={<NoPage />} /> */}
+        </Routes>
+        <SingleDialog setScreen={setScreen} setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />
+        <HostedDialog setScreen={setScreen} setOpenHosted={setOpenHosted} openHosted={openHosted} handleCloseHosted={handleCloseHosted} />
+      </BrowserRouter >
     </>
   );
 }

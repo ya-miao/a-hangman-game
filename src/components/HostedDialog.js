@@ -9,7 +9,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import * as mutations from '../graphql/mutations';
 import { API } from 'aws-amplify';
 
-const HostedDialog = ({setScreen, setOpenHosted, openHosted, handleCloseHosted }) => {
+import { useNavigate } from "react-router-dom";
+
+const HostedDialog = ({ setScreen, setOpenHosted, openHosted, handleCloseHosted }) => {
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     // setPlayerName(event.target.value)
@@ -34,13 +37,13 @@ const HostedDialog = ({setScreen, setOpenHosted, openHosted, handleCloseHosted }
       <DialogActions>
         <Button onClick={handleCloseHosted}>Cancel</Button>
         <Button onClick={async () => {
-        //   const newPlayer = await API.graphql({
-        //     query: mutations.createPlayer,
-        //     variables: { input: { player: playerName } }
-        //   });
+          //   const newPlayer = await API.graphql({
+          //     query: mutations.createPlayer,
+          //     variables: { input: { player: playerName } }
+          //   });
 
           setOpenHosted(false);
-        //   setScreen('hosted');
+          navigate('/hosted');
         }}>Share</Button>
       </DialogActions>
     </Dialog>

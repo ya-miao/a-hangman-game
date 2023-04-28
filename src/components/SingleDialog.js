@@ -9,7 +9,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import * as mutations from '../graphql/mutations';
 import { API } from 'aws-amplify';
 
+import { useNavigate } from "react-router-dom";
+
 const SingleDialog = ({setScreen, setOpenSingle, openSingle, handleCloseSingle, playerName, setPlayerName, setPlayerId}) => {
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     setPlayerName(event.target.value)
@@ -41,7 +45,10 @@ const SingleDialog = ({setScreen, setOpenSingle, openSingle, handleCloseSingle, 
 
           setPlayerId(newPlayer?.data?.createPlayer?.id);
           setOpenSingle(false);
-          setScreen('single');
+          // setScreen('single');
+          // TASK
+          navigate('/hangman');
+          //
         }}>Play</Button>
       </DialogActions>
     </Dialog>

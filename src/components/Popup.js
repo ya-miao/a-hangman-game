@@ -4,7 +4,11 @@ import { Stack } from '@mui/material';
 import { API } from "aws-amplify";
 import * as mutations from '../graphql/mutations';
 
+import { useNavigate } from "react-router-dom";
+
 const Popup = ({ setScreen, correctLetters, wrongLetters, selectedWord, setPlayable, playAgain, tries, checkLeaderboard, playerId }) => {
+  const navigate = useNavigate();
+
   let finalMessage = '';
   let finalMessageRevealWord = '';
   let playable = true;
@@ -54,15 +58,17 @@ const Popup = ({ setScreen, correctLetters, wrongLetters, selectedWord, setPlaya
   return (
     <div className="popup-container" style={finalMessage !== '' ? { display: 'flex' } : {}}>
       <div className="popup">
-          <Stack direction="column" gap={1}>
-            <h2>{finalMessage}</h2>
-            <h3>{finalMessageRevealWord}</h3>
-          </Stack>
-          <Stack direction="row" gap={1}>
-            <button onClick={playAgain}>Play Again</button>
-            <button onClick={e => setScreen('intro')}>Main Menu</button>
-            <button onClick={checkLeaderboard}>Check Leaderboad</button>
-          </Stack>
+        <Stack direction="column" gap={1}>
+          <h2>{finalMessage}</h2>
+          <h3>{finalMessageRevealWord}</h3>
+        </Stack>
+        <Stack direction="row" gap={1}>
+          <button onClick={playAgain}>Play Again</button>
+          <button onClick={e => {
+            navigate('/');
+          }}>Main Menu</button>
+          <button onClick={checkLeaderboard}>Check Leaderboad</button>
+        </Stack>
       </div>
     </div>
   )

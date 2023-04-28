@@ -22,7 +22,7 @@ const Hangman = ({ setScreen, playerId }) => {
   return (
     <Container sx={{ m: 4 }}>
       <Stack direction='column'>
-        <GameVisual setScreen={setScreen} playerId={playerId} selectedWord={selectedWord}/>
+        <GameVisual setScreen={setScreen} playerId={playerId} words={words} selectedWord={selectedWord}/>
       </Stack>
     </Container>
   );

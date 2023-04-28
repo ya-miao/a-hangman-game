@@ -2,8 +2,7 @@ import { Button, Box, Stack, Typography } from "@mui/material";
 
 import React from 'react';
 
-const IntroScreen = ({ setScreen, handleOpenSingle, handleOpenHosted }) => {
-
+const IntroScreen = ({ handleOpenSingle, handleOpenHosted }) => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <Stack spacing={3} sx={{ alignItems: 'center' }}>
@@ -16,9 +15,7 @@ const IntroScreen = ({ setScreen, handleOpenSingle, handleOpenHosted }) => {
           <button onClick={() => {handleOpenHosted(true);}} className="btns-styles slide_right">Host Game</button>
         </Stack>
       </Stack>
-      
     </Box>
-
   );
 }
 export default IntroScreen;
