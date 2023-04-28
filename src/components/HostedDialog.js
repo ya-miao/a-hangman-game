@@ -47,7 +47,7 @@ const HostedDialog = ({ setOpenHosted, openHosted, handleCloseHosted, hostedWord
         <DialogContent>
           <Stack spacing={2}>
             <DialogContentText>
-              Enter the word to guess for your hosted game.
+              Generate a link for a friend to guess your chosen word!
             </DialogContentText>
             <TextField
               defaultValue={hostedWord}

@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Container, Stack } from "@mui/material";
 
@@ -10,6 +10,8 @@ import * as queries from '../graphql/queries';
 
 const Hangman = ({ playerId }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const getHostedId = location.pathname.replace('/hangman/', '')
 
   const words = ['application', 'programming', 'interface', 'wizard',
@@ -25,6 +27,14 @@ const Hangman = ({ playerId }) => {
   
   const [selectedWord, setSelectedWord] = useState('');
 
+  const getHostedGame = async () => {
+    const oneGame = await API.graphql({
+      query: queries.getHostedGame,
+      variables: { id: getHostedId }
+    });
+    setSelectedWord(oneGame?.data?.getHostedGame?.word);
+  };
+
   useEffect(() => {
     if(getHostedId !== '/hangman') {
       getHostedGame();
@@ -33,13 +43,11 @@ const Hangman = ({ playerId }) => {
     }
   }, [])
 
-  const getHostedGame = async () => {
-    const oneGame = await API.graphql({
-      query: queries.getHostedGame,
-      variables: { id: getHostedId }
-    });
-    setSelectedWord(oneGame?.data?.getHostedGame?.word);
-  };
+  useEffect(() => {
+    if (playerId === '') {
+      navigate('/');
+    }
+  }, [playerId]);
 
   return (
     <Container sx={{ m: 4 }}>
