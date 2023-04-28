@@ -1,4 +1,4 @@
-import { Button, Stack } from '@mui/material';
+import { Button, Grid, Stack } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -59,24 +59,27 @@ const HostedDialog = ({ setOpenHosted, openHosted, handleCloseHosted, hostedWord
               variant="standard"
               onChange={handleInputChange}
             />
-            <TextField label='Link to Hosted Game' size='small' fullWidth value={hostedLink} />
+            <Stack direction='row' spacing={2}>
+              <Button onClick={async () => {
+                if (hostedWord === '') {
+                  setOpenAlert(true);
+                } else {
+                  const newHostedGame = await API.graphql({
+                    query: mutations.createHostedGame,
+                    variables: { input: { word: String(hostedWord).toLowerCase() } }
+                  });
+                  setHostedWord(newHostedGame?.data?.createHostedGame?.word);
+                  setHostedId(newHostedGame?.data?.createHostedGame?.id);
+                  setHostedLink(`${window.location.origin}/hosted/${newHostedGame?.data?.createHostedGame?.id}`);
+                }
+              }}>Generate</Button>
+              <TextField label='Link to Hosted Game' size='small' fullWidth value={hostedLink} />
+            </Stack>
           </Stack>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseHosted}>Close</Button>
-          <Button onClick={async () => {
-            if (hostedWord === '') {
-              setOpenAlert(true);
-            } else {
-              const newHostedGame = await API.graphql({
-                query: mutations.createHostedGame,
-                variables: { input: { word: String(hostedWord).toLowerCase() } }
-              });
-              setHostedWord(newHostedGame?.data?.createHostedGame?.word);
-              setHostedId(newHostedGame?.data?.createHostedGame?.id);
-              setHostedLink(`${window.location.origin}/hosted/${newHostedGame?.data?.createHostedGame?.id}`);
-            }
-          }}>Generate</Button>
+
         </DialogActions>
       </Dialog>
     </>
