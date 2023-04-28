@@ -22,7 +22,9 @@ const Hangman = ({ playerId }) => {
     'drake', 'kendrick', 'matilda', 'memes', 'cheetos', 'dorritos', 'fanta', 'pepsi',
     'playstation', 'xbox', 'samsung', 'ikea', 'walmart', 'target', 'tesla', 'ebay',
     'tacos', 'dumplings', 'margarita', 'california', 'paris', 'country', 'brazil', 'soccer',
-    'chelsea', 'argentina', 'ocean', 'mountain', 'alligator', 'parrot'
+    'chelsea', 'argentina', 'ocean', 'mountain', 'alligator', 'parrot', 'kitty', 'ostentatious',
+    'gregarious', 'outrageous', 'impulsive', 'hurtful', 'anger', 'enamored', 'beloved',
+    'betrayed', 'resolution', 'beautiful', 'strife', 'fulfilled'
   ];
   
   const [selectedWord, setSelectedWord] = useState('');
