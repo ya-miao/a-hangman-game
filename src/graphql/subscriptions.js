@@ -34,3 +34,39 @@ export const onDeletePlayer = /* GraphQL */ `
     }
   }
 `;
+export const onCreateHostedGame = /* GraphQL */ `
+  subscription OnCreateHostedGame(
+    $filter: ModelSubscriptionHostedGameFilterInput
+  ) {
+    onCreateHostedGame(filter: $filter) {
+      id
+      word
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateHostedGame = /* GraphQL */ `
+  subscription OnUpdateHostedGame(
+    $filter: ModelSubscriptionHostedGameFilterInput
+  ) {
+    onUpdateHostedGame(filter: $filter) {
+      id
+      word
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteHostedGame = /* GraphQL */ `
+  subscription OnDeleteHostedGame(
+    $filter: ModelSubscriptionHostedGameFilterInput
+  ) {
+    onDeleteHostedGame(filter: $filter) {
+      id
+      word
+      createdAt
+      updatedAt
+    }
+  }
+`;

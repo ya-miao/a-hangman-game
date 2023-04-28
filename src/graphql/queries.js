@@ -30,3 +30,30 @@ export const listPlayers = /* GraphQL */ `
     }
   }
 `;
+export const getHostedGame = /* GraphQL */ `
+  query GetHostedGame($id: ID!) {
+    getHostedGame(id: $id) {
+      id
+      word
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listHostedGames = /* GraphQL */ `
+  query ListHostedGames(
+    $filter: ModelHostedGameFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listHostedGames(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        word
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

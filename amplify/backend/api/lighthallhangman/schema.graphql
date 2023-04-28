@@ -7,3 +7,8 @@ type Player @model {
   player: String!
   score: Int
 }
+
+type HostedGame @model {
+  id: ID!
+  word: String!
+}

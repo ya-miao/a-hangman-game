@@ -43,3 +43,42 @@ export const deletePlayer = /* GraphQL */ `
     }
   }
 `;
+export const createHostedGame = /* GraphQL */ `
+  mutation CreateHostedGame(
+    $input: CreateHostedGameInput!
+    $condition: ModelHostedGameConditionInput
+  ) {
+    createHostedGame(input: $input, condition: $condition) {
+      id
+      word
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateHostedGame = /* GraphQL */ `
+  mutation UpdateHostedGame(
+    $input: UpdateHostedGameInput!
+    $condition: ModelHostedGameConditionInput
+  ) {
+    updateHostedGame(input: $input, condition: $condition) {
+      id
+      word
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteHostedGame = /* GraphQL */ `
+  mutation DeleteHostedGame(
+    $input: DeleteHostedGameInput!
+    $condition: ModelHostedGameConditionInput
+  ) {
+    deleteHostedGame(input: $input, condition: $condition) {
+      id
+      word
+      createdAt
+      updatedAt
+    }
+  }
+`;
