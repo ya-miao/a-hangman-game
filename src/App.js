@@ -3,6 +3,8 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -15,6 +17,15 @@ import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import Leaderboard from './pages/LeaderBoard';
 Amplify.configure(awsconfig);
+
+const siteTheme = createTheme({
+  typography: {
+    // fontFamily: 'Montserrat',
+    // fontFamily: 'Maven Pro',
+    fontFamily: 'Syne Mono',
+    // fontFamily: 'Major Mono Display',
+  },
+});
 
 const App = () => {
 
@@ -44,7 +55,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={siteTheme}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<IntroScreen handleOpenSingle={handleOpenSingle} handleOpenHosted={handleOpenHosted} hosted={false} />} />
@@ -55,7 +66,7 @@ const App = () => {
         <SingleDialog setOpenSingle={setOpenSingle} openSingle={openSingle} handleCloseSingle={handleCloseSingle} playerName={playerName} setPlayerName={setPlayerName} setPlayerId={setPlayerId} />
         <HostedDialog setOpenHosted={setOpenHosted} openHosted={openHosted} handleCloseHosted={handleCloseHosted} hostedWord={hostedWord} setHostedWord={setHostedWord} hostedId={hostedId} setHostedId={setHostedId} />
       </BrowserRouter >
-    </>
+    </ThemeProvider>
   );
 }
 

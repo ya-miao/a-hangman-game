@@ -26,17 +26,17 @@ const Leaderboard = ({ playerId }) => {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Stack sx={{ FontFamily: 'Raleway', width: "1000px" }}>
+      <Stack sx={{ width: "1000px" }}>
         <Stack container direction='row' justifyContent="space-between">
           <button className="btns-styles slide_right" onClick={e => {
             navigate('/');
-            }}>Menu</button>
+          }}>Menu</button>
           <button className="btns-styles slide_right" onClick={e => {
             navigate('/hangman');
-            }}>Play</button>
+          }}>Play</button>
         </Stack>
         <Stack container direction='row' justifyContent="center" alignItems="center" gap={2}>
-          <Typography variant='h2' sx={{ fontFamily: "Lucida Console, Monaco, monospace", textAlign: "center", color: "#ffe478" }}>
+          <Typography variant='h2' sx={{ textAlign: "center", color: "#ffe478" }}>
             Leaderboard
           </Typography>
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-gamepad" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffe478" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -50,21 +50,30 @@ const Leaderboard = ({ playerId }) => {
 
         <Stack container direction='column' overflow={"scroll"} height={"350px"} marginTop={2}>
           <Stack container direction='row' p={2} justifyContent="space-between" className='leaderboard-header' sx={{ bgcolor: "#203c56" }}>
-            <div>Rank</div>
+            {/* <div>Rank</div>
             <div>Name</div>
-            <div>Score</div>
+            <div>Score</div> */}
+            <Typography variant='h6'>Rank</Typography>
+            <Typography variant='h6'>Name</Typography>
+            <Typography variant='h6'>Score</Typography>
           </Stack>
           {playersList?.slice(0, 10).map((player, index) => (
             <Paper variant={player?.id === playerId ? 'outlined' : 'elevation'} key={index} sx={{ bgcolor: player?.id === playerId ? '#ffe478' : 'white', p: 2, borderRadius: 0, color: "black", fontWeight: "bold" }}>
               <Stack container alignItems="center" direction='row' justifyContent="space-between">
                 <Grid>
-                  {index + 1}
+                  <Typography>
+                    {index + 1}
+                  </Typography>
                 </Grid>
                 <Grid>
-                  {player?.player}
+                  <Typography>
+                    {player?.player}
+                  </Typography>
                 </Grid>
                 <Grid>
-                  {player?.score}
+                  <Typography>
+                    {player?.score}
+                  </Typography>
                 </Grid>
               </Stack>
             </Paper>

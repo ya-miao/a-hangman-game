@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import React from 'react';
 
 const Word = ({ selectedWord, correctLetters }) => {
@@ -7,7 +8,9 @@ const Word = ({ selectedWord, correctLetters }) => {
       {selectedWord.split('').map((letter, i) => {
         return (
           <span className="letter" key={i}>
-            {correctLetters.includes(letter) ? letter : ''}
+            <Typography variant='h4'>
+              {correctLetters.includes(letter) ? letter : ''}
+            </Typography>
           </span>
         )
       })}

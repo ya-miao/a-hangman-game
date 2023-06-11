@@ -7,12 +7,12 @@ const IntroScreen = ({ hosted, handleOpenSingle, handleOpenHosted }) => {
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <Stack spacing={3} sx={{ alignItems: 'center' }}>
         <Stack alignItems="center">
-          <Typography variant="h1" sx={{ fontFamily: 'Montserrat', color: "#ffe478" }}>Hangman</Typography>
-          <Typography variant="h5" sx={{ fontFamily: 'Sacramento', color: "white" }}>online</Typography>
+          <Typography variant="h1" sx={{ fontFamily: 'Syne Mono', color: "#ffe478" }}>Hangman</Typography>
+          <Typography variant="h5" sx={{ color: "white" }}>online</Typography>
         </Stack>
         { hosted ? 
           <Stack direction='column' spacing={2} marginTop={3} alignItems='center'>
-            <Typography variant="overline" sx={{ fontFamily: 'Sacramento', color: "white" }}>You've received a shared link!</Typography>
+            <Typography variant="overline" sx={{ color: "white" }}>You've received a shared link!</Typography>
             <button onClick={() => {handleOpenSingle(true);}} className="btns-styles slide_right">Play Hosted Game</button>
           </Stack>
           :

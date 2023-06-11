@@ -1,9 +1,16 @@
 import React from 'react'
 
+import { Stack, Typography } from '@mui/material';
+
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 const Tries = ({tries}) => {
   return (
     <div className="tries-container">
-      <h2>Lives: <span>{tries} ❤️</span></h2>
+      <Stack direction='row' spacing={1.5}>
+        <Typography>Lives: {tries}</Typography>
+        <FavoriteIcon fontSize='small' />
+      </Stack>
     </div>
   )
 }

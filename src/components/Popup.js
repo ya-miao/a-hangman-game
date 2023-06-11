@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { checkWin } from '../helpers/helpers';
-import { Alert, Snackbar, Stack } from '@mui/material';
+import { Alert, Snackbar, Stack, Typography } from '@mui/material';
 import { API } from "aws-amplify";
 import * as mutations from '../graphql/mutations';
 
@@ -34,8 +34,8 @@ const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAg
     finalMessage = 'Congratulations! You won!';
     playable = false;
   } else if (checkWin(correctLetters, wrongLetters, selectedWord) === 'lose') {
-    finalMessage = 'Sorry, you lost :(';
-    finalMessageRevealWord = `...the word was: ${selectedWord}`;
+    finalMessage = 'GAME OVER';
+    finalMessageRevealWord = `The word was... ${selectedWord}`;
     playable = false;
   }
 
@@ -61,14 +61,20 @@ const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAg
         onClose={handleCloseAlert}
       >
         <Alert onClose={handleCloseAlert} severity="error" sx={{ width: '100%' }}>
-          You've already won this hosted game!
+          <Typography>
+            You've already won this hosted game!
+          </Typography>
         </Alert>
       </Snackbar>
       <div className="popup-container" style={finalMessage !== '' ? { display: 'flex' } : {}}>
         <div className="popup">
           <Stack direction="column" gap={1}>
-            <h2>{finalMessage}</h2>
-            <h3>{finalMessageRevealWord}</h3>
+            <Typography variant='h5'>
+              {finalMessage}
+            </Typography>
+            <Typography>
+              {finalMessageRevealWord}
+            </Typography>
           </Stack>
           <Stack direction="row" gap={1}>
             <button onClick={() => {
@@ -77,11 +83,23 @@ const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAg
               } else {
                 playAgain();
               }
-            }}>Play Again</button>
+            }}>
+              <Typography>
+                Play Again
+              </Typography>
+            </button>
             <button onClick={e => {
               navigate('/');
-            }}>Main Menu</button>
-            <button onClick={checkLeaderboard}>Check Leaderboard</button>
+            }}>
+              <Typography>
+                Main Menu
+              </Typography>
+            </button>
+            <button onClick={checkLeaderboard}>
+              <Typography>
+                Check Leaderboard
+              </Typography>
+            </button>
           </Stack>
         </div>
       </div>
